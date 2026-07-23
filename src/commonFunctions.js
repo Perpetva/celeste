@@ -47,6 +47,7 @@ export async function bookATable(person) {
 
     await page.waitForLoadState('networkidle')
 
+    await delay(2000)
     await page.locator('.css-9pa8cd').click()
 
     await page.locator('div').filter({ hasText: /^Reservar$/ }).first().click()
@@ -55,4 +56,10 @@ export async function bookATable(person) {
     await page.pause()
 
     await browser.close()
+}
+
+function delay(time) {
+    return new Promise(function (resolve) {
+        setTimeout(resolve, time)
+    })
 }
