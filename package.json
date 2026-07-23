@@ -1,0 +1,20 @@
+{
+  "name": "celeste",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "baileys": "^7.0.0-rc13",
+    "dotenv": "^17.4.2",
+    "node-cron": "^4.6.0",
+    "playwright": "^1.61.1",
+    "puppeteer": "^25.3.0"
+  }
+}
