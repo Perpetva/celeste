@@ -13,7 +13,7 @@ const richardTable = 'path:nth-child(6)'
 
 export async function bookATable(person) {
     const browser = await chromium.launch({
-        headless: false,
+        headless: true,
     })
 
     const page = await browser.newPage()
