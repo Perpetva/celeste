@@ -9,8 +9,6 @@ const senha = process.env.SENHA
 
 const link = process.env.LINK
 
-const richardTable = 'path:nth-child(6)'
-
 export async function bookATable(person) {
     const browser = await chromium.launch({
         headless: true, 
@@ -48,7 +46,7 @@ export async function bookATable(person) {
     await page.waitForLoadState('networkidle')
 
     await delay(2000)
-    await page.locator('.css-9pa8cd').click()
+    await page.getByText(person.name).click()
 
     await page.locator('div').filter({ hasText: /^Reservar$/ }).first().click()
 
