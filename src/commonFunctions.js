@@ -13,7 +13,7 @@ const richardTable = 'path:nth-child(6)'
 
 export async function bookATable(person) {
     const browser = await chromium.launch({
-        headless: true,
+        headless: true, 
     })
 
     const page = await browser.newPage()
@@ -52,8 +52,10 @@ export async function bookATable(person) {
 
     await page.locator('div').filter({ hasText: /^Reservar$/ }).first().click()
 
-    // inspeção
-    await page.pause()
+    // comentar
+    // await page.pause()
+
+    console.log(`Reserva feita para ${person.name} com sucesso!`)
 
     await browser.close()
 }

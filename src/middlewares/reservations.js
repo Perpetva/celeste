@@ -11,7 +11,7 @@ const juliaTable = { name: juliaName, selector: 'path:nth-child(5)' }
 const richardTable = { name: richardName, selector: 'path:nth-child(6)' }
 
 export async function tableReservation() {
-    await bookATable(richardTable)
-    await bookATable(juliaTable)
     await bookATable(brunaTable)
+    await bookATable(juliaTable)
+    await bookATable(richardTable)
 }
