@@ -37,10 +37,11 @@ export async function bookATable(person) {
     await page.getByTestId(`undefined.day_${nextDay}`).click()
 
     await page.locator('div').filter({ hasText: /^Próximo$/ }).nth(1).click()
+    await page.locator('div').filter({ hasText: /^\+− Leaflet \| © OpenStreetMap contributors$/ }).nth(1) //clicar no branco
 
-    await page.locator(person.selector).click()
+    await page.locator('path').nth(person.number).click()
 
-    await page.getByText('Para mim').click()
+    await page.getByText('Para mim').click()
     await page.getByRole('textbox', { name: 'Pesquisar' }).fill(person.name)
 
     await page.waitForLoadState('networkidle')
