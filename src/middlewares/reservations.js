@@ -11,7 +11,20 @@ const juliaTable = { name: juliaName, number: 55 }
 const richardTable = { name: richardName, number: 54 }
 
 export async function tableReservation() {
-    await bookATable(brunaTable)
-    await bookATable(juliaTable)
-    await bookATable(richardTable)
+    const people = [brunaTable, juliaTable, richardTable]
+    const results = []
+
+    for (const person of people) {
+        try {
+            await bookATable(person)
+            results.push({ name: person.name, ok: true })
+        } catch (error) {
+            console.error(`Falha ao reservar para ${person.name}:`, error?.message || error)
+            results.push({ name: person.name, ok: false })
+        }
+    }
+
+    const success = results.filter((result) => result.ok).length
+    const failed = results.length - success
+    console.log(`Resumo da execução: ${success} sucesso(s), ${failed} falha(s).`)
 }
