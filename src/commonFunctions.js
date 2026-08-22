@@ -37,16 +37,16 @@ export async function bookATable(person) {
 
             await page.waitForLoadState('networkidle')
 
-    await page.getByText('EPEvertrade - Rua Paraíso').click()
+            await page.getByText('EPEvertrade - Rua Paraíso').click()
 
-    await page.getByText('16º AndarEstação de trabalho').click()
+            await page.getByText('16º AndarEstação de trabalho').click()
 
             const nextDay = await nextWeekDay()
             await page.getByTestId(`undefined.day_${nextDay}`).click()
 
-    await page.locator('div').filter({ hasText: /^Próximo$/ }).nth(1).click()
+            await page.locator('div').filter({ hasText: /^Próximo$/ }).nth(1).click()
 
-    await page.locator(`path:nth-child(${person.number})`).click()
+            await page.locator(`path:nth-child(${person.number})`).click()
 
             await page.getByText('Para mim').first().click()
             await page.getByRole('textbox', { name: 'Pesquisar' }).fill(person.name)
@@ -55,7 +55,7 @@ export async function bookATable(person) {
             await personOption.waitFor({ state: 'visible', timeout: 10000 })
             await personOption.click()
 
-            await page.getByRole('button', { name: 'Reservar' }).first().click()
+            await page.locator('div').filter({ hasText: /^Reservar$/ }).first().click()
             await page.waitForLoadState('networkidle')
 
             console.log(`Reserva feita para ${person.name} com sucesso! (tentativa ${attempt})`)
