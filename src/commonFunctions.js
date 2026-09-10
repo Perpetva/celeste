@@ -55,8 +55,9 @@ export async function bookATable(person) {
             await personOption.waitFor({ state: 'visible', timeout: 10000 })
             await personOption.click()
 
+            const initialBodyText = await page.locator('body').innerText()
             await page.locator('div').filter({ hasText: /^Reservar$/ }).first().click()
-            await page.waitForLoadState('networkidle')
+            await waitForReservationResult(page, person.name, initialBodyText)
 
             console.log(`Reserva feita para ${person.name} com sucesso! (tentativa ${attempt})`)
         } finally {
@@ -64,6 +65,32 @@ export async function bookATable(person) {
             await browser.close()
         }
     }, 3)
+}
+
+async function waitForReservationResult(page, personName, initialBodyText) {
+    const confirmation = /reserva (?:realizada|confirmada|criada|efetuada)|reservad[oa] com sucesso|sucesso na reserva/i
+    const failure = /erro|falha|indispon[ií]vel|n[aã]o foi poss[ií]vel|j[aá] reservad/i
+
+    await page.waitForFunction(
+        ({ initialText, confirmationSource, failureSource }) => {
+            const text = document.body.innerText
+            const changedText = text.replace(initialText, '')
+            return new RegExp(confirmationSource, 'i').test(changedText)
+                || new RegExp(failureSource, 'i').test(changedText)
+        },
+        {
+            initialText: initialBodyText,
+            confirmationSource: confirmation.source,
+            failureSource: failure.source,
+        },
+        { timeout: 10000 },
+    )
+
+    const bodyText = await page.locator('body').innerText()
+    const resultText = bodyText.replace(initialBodyText, '')
+    if (failure.test(resultText) || !confirmation.test(resultText)) {
+        throw new Error(`A aplicação não confirmou a reserva para ${personName}.`)
+    }
 }
 
 async function runWithRetry(task, maxAttempts = 3) {

@@ -3,15 +3,13 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const brunaName = process.env.BRUNA_NAME
-const juliaName = process.env.JULIA_NAME
 const richardName = process.env.RICHARD_NAME
 
 const brunaTable = { name: brunaName, number: 56 }
-const juliaTable = { name: juliaName, number: 55 }
-const richardTable = { name: richardName, number: 54 }
+const richardTable = { name: richardName, number: 55 }
 
 export async function tableReservation() {
-    const people = [brunaTable, juliaTable, richardTable]
+    const people = [brunaTable, richardTable]
     const results = []
 
     for (const person of people) {
