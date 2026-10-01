@@ -6,8 +6,6 @@ async function start() {
     await tableReservation()
 }
 
-await start()
-
 cron.schedule('0 0 * * *', async () => {
     try {
         console.log('Execução agendada iniciada em ' + new Date().toLocaleString())

@@ -42,6 +42,7 @@ export async function bookATable(person) {
             await page.getByText('16º AndarEstação de trabalho').click()
 
             const nextDay = await nextWeekDay()
+            await page.waitForLoadState('networkidle')
             await page.getByTestId(`undefined.day_${nextDay}`).click()
 
             await page.locator('div').filter({ hasText: /^Próximo$/ }).nth(1).click()
