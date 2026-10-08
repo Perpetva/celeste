@@ -4,12 +4,20 @@ dotenv.config()
 
 const brunaName = process.env.BRUNA_NAME
 const richardName = process.env.RICHARD_NAME
+const brunoName = process.env.BRUNO_NAME
+const vininame = process.env.VINI_NAME
+const maduName = process.env.MADU_NAME
+const rosiName = process.env.ROSINA_NAME
 
-const brunaTable = { name: brunaName, number: 56 }
-const richardTable = { name: richardName, number: 55 }
+const brunaTable = { name: brunaName, number: 98 }
+const richardTable = { name: richardName, number: 97 }
+const brunoTable = { name: brunoName, number: 93 }
+const viniTable = { name: vininame, number: 92 }
+const maduTable = { name: maduName, number: 88 }
+const rosiTable = { name: rosiName, number: 87 }
 
 export async function tableReservation() {
-    const people = [brunaTable, richardTable]
+    const people = [brunaTable, richardTable, brunoTable, viniTable, maduTable, rosiTable]
     const results = []
 
     for (const person of people) {
