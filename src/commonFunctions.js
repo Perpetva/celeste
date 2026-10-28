@@ -43,7 +43,13 @@ export async function bookATable(person) {
 
             const nextDay = await nextWeekDay()
             await page.waitForLoadState('networkidle')
-            await page.getByTestId(`undefined.day_${nextDay}`).click()
+            const dayButton = page.getByTestId(`undefined.day_${nextDay}`)
+
+            if (!(await dayButton.isVisible().catch(() => false))) {
+                await page.getByTestId('undefined.header.rightArrow').click()
+            }
+            
+            await dayButton.click()
 
             await page.locator('div').filter({ hasText: /^Próximo$/ }).nth(1).click()
 
