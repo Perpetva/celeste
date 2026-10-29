@@ -68,6 +68,7 @@ export async function bookATable(person) {
 
             console.log(`Reserva feita para ${person.name} com sucesso! (tentativa ${attempt})`)
         } finally {
+            
             await context.close()
             await browser.close()
         }
