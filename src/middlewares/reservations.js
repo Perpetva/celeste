@@ -10,18 +10,20 @@ const rosiName = process.env.ROSI_NAME
 const gabrielName = process.env.GABRIEL_NAME
 const diogoName = process.env.DIOGO_NAME
 const virginiaName = process.env.VIRGINIA_NAME
+const maduName = process.env.MADU_NAME
 
-const brunaTable = { name: brunaName, number: 98 }
-const richardTable = { name: richardName, number: 97 }
-const brunoTable = { name: brunoName, number: 93 }
-const viniTable = { name: viniName, number: 92 }
-const rosiTable = { name: rosiName, number: 87 }
-const gabrielTable = { name: gabrielName, number: 88 }
-const diogoTable = { name: diogoName, number: 19 }
-const virginiaTable = { name: virginiaName, number: 20 }
+const brunaTable = { name: brunaName, number: 95 }
+const richardTable = { name: richardName, number: 94 }
+const brunoTable = { name: brunoName, number: 96 }
+const viniTable = { name: viniName, number: 91 }
+const rosiTable = { name: rosiName, number: 90 }
+const gabrielTable = { name: gabrielName, number: 101 }
+const diogoTable = { name: diogoName, number: 99 }
+const virginiaTable = { name: virginiaName, number: 100 }
+const maduTable = { name: maduName, number: 89 }
 
 export async function tableReservation() {
-    const people = [brunaTable, richardTable, brunoTable, viniTable, rosiTable, gabrielTable, diogoTable, virginiaTable]
+    const people = [brunaTable, richardTable, brunoTable, viniTable, rosiTable, gabrielTable, diogoTable, virginiaTable, maduTable]
     const results = []
 
     for (const person of people) {
