@@ -11,6 +11,10 @@ const gabrielName = process.env.GABRIEL_NAME
 const diogoName = process.env.DIOGO_NAME
 const virginiaName = process.env.VIRGINIA_NAME
 const angelicaName = process.env.ANGELICA_NAME
+const brunaCintraName = process.env.BRUNA_CINTRA_NAME
+const juliaName = process.env.JULIA_NAME
+const ronyellioName = process.RONYELLIO_NAME
+const ricardoName = process.env.RICARDO_NAME
 
 const brunaTable = { name: brunaName, number: 90 }
 const richardTable = { name: richardName, number: 89 }
@@ -21,9 +25,13 @@ const gabrielTable = { name: gabrielName, number: 101 }
 const diogoTable = { name: diogoName, number: 99 }
 const virginiaTable = { name: virginiaName, number: 100 }
 const angelicaTable = { name: angelicaName, number: 95 }
+const brunaCintraTable = { name: brunaCintraName, number: 92 }
+const juliaTable = { name: juliaName, number: 87 }
+const ronyellioTable = { name: ronyellioName, number: 88 }
+const ricardoTable = { name: ricardoName, number: 93 }
 
 export async function tableReservation() {
-    const people = [brunaTable, richardTable, brunoTable, viniTable, rosiTable, gabrielTable, diogoTable, virginiaTable, angelicaTable]
+    const people = [brunaTable, richardTable, brunoTable, viniTable, angelicaTable, rosiTable, gabrielTable, diogoTable, virginiaTable, brunaCintraTable, juliaTable, ronyellioTable, ricardoTable]
     const results = []
 
     for (const person of people) {
