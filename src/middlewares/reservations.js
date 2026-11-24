@@ -13,7 +13,7 @@ const virginiaName = process.env.VIRGINIA_NAME
 const angelicaName = process.env.ANGELICA_NAME
 const brunaCintraName = process.env.BRUNA_CINTRA_NAME
 const juliaName = process.env.JULIA_NAME
-const ronyellioName = process.RONYELLIO_NAME
+const ronyellioName = process.env.RONYELLIO_NAME
 const ricardoName = process.env.RICARDO_NAME
 
 const brunaTable = { name: brunaName, number: 90 }
